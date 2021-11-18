@@ -1,0 +1,25 @@
+version: '3.1'
+services:
+  cmdb:
+    image: ccr.ccs.tencentyun.com/bk.io/cmdb-standalone:latest
+    container_name: bk_cmdb
+    hostname: BK_CMDB
+    volumes:
+      - ./data/pg:/data/sidecar/mongodb/db
+      - ./data/redis:/data/sidecar/redis/db
+    networks: 
+      vpn:
+        ipv4_address: 172.168.33.2
+    ports:
+      - "8090:8090"
+    restart: on-failure
+
+networks:
+  vpn:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet:  172.168.33.0/24
+          gateway: 172.168.33.1
+
