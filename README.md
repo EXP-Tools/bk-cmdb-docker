@@ -25,4 +25,4 @@
 - 官方文档：https://bk.tencent.com/docs/document/6.0/152/6962
 - Github 仓库：https://github.com/Tencent/bk-cmdb
 
-![](docs/resource/img/bk-cmdb.png)
+
