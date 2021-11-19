@@ -5,21 +5,27 @@ services:
     container_name: bk_cmdb
     hostname: BK_CMDB
     volumes:
-      - ./data/pg:/data/sidecar/mongodb/db
+      - ./data/mongodb:/data/sidecar/mongodb/db
       - ./data/redis:/data/sidecar/redis/db
-    networks: 
-      vpn:
-        ipv4_address: 172.168.33.2
+      - ./data/zookeeper:/data/sidecar/zookeeper/data
+      - ./logs/mongodb:/data/sidecar/mongodb/log
+      - ./logs/redis:/data/sidecar/redis/log
+      # - ./logs/zookeeper:/data/sidecar/zookeeper/log
+
+    # 不能指定 IP，不然内部会找不到内置服务
+    # networks: 
+    #   vpn:
+    #     ipv4_address: 172.168.33.2
     ports:
       - "8090:8090"
     restart: on-failure
 
-networks:
-  vpn:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet:  172.168.33.0/24
-          gateway: 172.168.33.1
+# networks:
+#   vpn:
+#     driver: bridge
+#     ipam:
+#       driver: default
+#       config:
+#         - subnet:  172.168.33.0/24
+#           gateway: 172.168.33.1
 
