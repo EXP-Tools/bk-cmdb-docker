@@ -6,3 +6,5 @@
 - 仓库：https://github.com/Tencent/bk-cmdb
 - 安装：https://github.com/Tencent/bk-cmdb/blob/master/docs/wiki/container-support.md
 
+第一次启动会报错，但会成功初始化数据库
+第二次启动才成功运行

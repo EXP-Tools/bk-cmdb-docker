@@ -12,20 +12,19 @@ services:
       - ./logs/redis:/data/sidecar/redis/log
       # - ./logs/zookeeper:/data/sidecar/zookeeper/log
 
-    # 不能指定 IP，不然内部会找不到内置服务
-    # networks: 
-    #   vpn:
-    #     ipv4_address: 172.168.33.2
+    networks: 
+      vpn:
+        ipv4_address: 172.168.33.2
     ports:
       - "8090:8090"
     restart: on-failure
 
-# networks:
-#   vpn:
-#     driver: bridge
-#     ipam:
-#       driver: default
-#       config:
-#         - subnet:  172.168.33.0/24
-#           gateway: 172.168.33.1
+networks:
+  vpn:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet:  172.168.33.0/24
+          gateway: 172.168.33.1
 
